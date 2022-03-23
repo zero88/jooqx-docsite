@@ -1,0 +1,15 @@
+site:
+  title: Reative SQL with Vert.x and jOOQ
+  start_page: jooqx::index.adoc
+content:
+  sources:
+  - url: ../
+    branches: HEAD
+    start_paths:
+      - docs/asciidoc/build/antora
+      - docs/testing-asciidoc/build/antora
+      - rsql/asciidoc/build/antora
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true

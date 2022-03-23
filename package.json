@@ -1,0 +1,12 @@
+{
+  "name": "jooqx-web-docs",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
+  "scripts": {
+    "antora": "antora"
+  },
+  "dependencies": {
+    "@antora/cli": "^3.0.1",
+    "@antora/site-generator": "^3.0.1"
+  }
+}
