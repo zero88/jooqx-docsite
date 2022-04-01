@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
-    "preantora": "rimraf build",
-    "antora": "antora"
+    "antora": "antora",
+    "build": "antora antora-playbook.yml",
+    "build:local": "antora antora-local-playbook.yml"
   },
   "dependencies": {
     "@antora/cli": "^3.0.1",
+    "@antora/lunr-extension": "^1.0.0-alpha.6",
     "@antora/site-generator": "^3.0.1"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2"
+    "prettier": "2.6.1"
   }
 }
