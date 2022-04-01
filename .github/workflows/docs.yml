@@ -1,0 +1,60 @@
+name: docs
+
+on:
+  workflow_dispatch:
+    inputs:
+      ciMsg:
+        description: 'CI message'
+        required: true
+        default: 'Deploy jooq.x documentation'
+
+jobs:
+  site:
+    name: Deploy documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Checkout webdocs
+        uses: actions/checkout@v3
+        with:
+          path: webdocs
+
+      - name: Deploy site
+        shell: bash
+        run: |
+          cd webdocs
+          yarn install
+          yarn antora --fetch antora-playbook.yml --stacktrace
+
+      - name: Checkout jooqx
+        uses: actions/checkout@v3
+        with:
+          repository: zero88/jooqx
+          ref: gh-pages
+          path: jooqx
+          token: ${{ secrets.OSS_GITHUB_TOKEN }}
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@v3
+        with:
+          git-user-signingkey: true
+          git-commit-gpgsign: true
+          git-tag-gpgsign: false
+          git-push-gpgsign: false
+          gpg-private-key: ${{ secrets.CI_GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.CI_GPG_PASSPHARSE }}
+          workdir: jooqx
+
+      - name: Sync changes to Git branch [gh-pages]
+        shell: bash
+        run: |
+          rm -rf jooqx/docs \
+            && mkdir jooqx/docs \
+            && cp -rf webdocs/build/site/* jooqx/docs
+          cd jooqx
+          git add .
+          git diff-index --quiet HEAD || git commit -am "${{ github.event.inputs.ciMsg }}"
+          git push -u origin gh-pages
