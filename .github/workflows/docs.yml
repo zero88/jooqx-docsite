@@ -53,7 +53,7 @@ jobs:
         run: |
           rm -rf jooqx/docs \
             && mkdir jooqx/docs \
-            && cp -rf webdocs/build/site/* jooqx/docs
+            && cp -rf webdocs/build/* jooqx/docs
           cd jooqx
           git add .
           git diff-index --quiet HEAD || git commit -am "${{ github.event.inputs.ciMsg }}"
