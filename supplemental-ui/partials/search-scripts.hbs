@@ -1,0 +1,32 @@
+{{#if env.ALGOLIA_API_KEY}}
+    <link rel="stylesheet" href="{{page.attributes.docsearch-cdn}}/docsearch.min.css"/>
+    <script async src="{{ page.attributes.docsearch-cdn }}/docsearch.min.js"></script>
+    <script>
+        let search = docsearch({
+                                   {{#with env.ALGOLIA_APP_ID}}
+                                       appId: '{{this}}',
+                                   {{/with}}
+                                   apiKey: '{{env.ALGOLIA_API_KEY}}',
+                                   indexName: '{{env.ALGOLIA_IDX_NAME}}',
+                                   inputSelector: '#search-input',
+                                   autocompleteOptions: { hint: false, keyboardShortcuts: ['s'] },
+                                   algoliaOptions: { hitsPerPage: 10 },
+                               }).autocomplete;
+        search.on('autocomplete:closed', function () {
+            search.autocomplete.setVal();
+        });
+    </script>
+    {{#if page.home}}
+        <script>
+            window.addEventListener('load', function focusSearchInput() {
+                window.removeEventListener('load', focusSearchInput);
+                document.querySelector('#search-input').focus();
+            });
+        </script>
+    {{/if}}
+{{else}}
+    <script async src="{{page.attributes.lunr-cdn}}"></script>
+    <script async src="{{uiRootPath}}/js/search-ui.js" id="search-ui-script" data-site-root-path="{{siteRootPath}}"
+            data-snippet-length="${snippetLength}" data-stylesheet="{{uiRootPath}}/css/search.css"></script>
+    <script async src="{{siteRootPath}}/search-index.js"></script>
+{{/if}}
