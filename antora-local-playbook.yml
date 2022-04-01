@@ -1,20 +1,15 @@
 site:
   title: Reactive SQL with Vert.x and jOOQ
   start_page: jooqx::index.adoc
-  url: https://zero88.github.io/jooqx
+  url: http://localhost:63342
   robots: allow
 content:
   sources:
-    - url: https://github.com/zero88/jooqx
-      start_paths: antora/jooqx
-      branches:
-        - docs/main
-        - docs/jooqx/v*
-    - url: https://github.com/zero88/jooqx
-      start_paths: antora/rsql
-      branches:
-        - docs/main
-        - docs/rsql/v*
+    - url: ../
+      branches: HEAD
+      start_paths:
+        - docs/build/antora
+        - rsql/asciidoc/build/antora
 asciidoc:
   attributes:
     page-github-repo: https://github.com/zero88/jooqx
