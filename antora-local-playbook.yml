@@ -1,7 +1,7 @@
 site:
   title: Reactive SQL with Vert.x and jOOQ
   start_page: jooqx::index.adoc
-  url: http://localhost:63342
+  url: http://localhost:1234
   robots: allow
 content:
   sources:

@@ -5,7 +5,9 @@
   "scripts": {
     "antora": "antora",
     "build": "antora antora-playbook.yml",
-    "build:local": "antora antora-local-playbook.yml"
+    "build:local": "antora antora-local-playbook.yml",
+    "prehttp": "yarn run build:local",
+    "http": "http-server build -p 1234 -o -c-1"
   },
   "dependencies": {
     "@antora/cli": "^3.0.1",
@@ -13,6 +15,7 @@
     "@antora/site-generator": "^3.0.1"
   },
   "devDependencies": {
+    "http-server": "^14.1.0",
     "prettier": "2.6.1"
   }
 }
