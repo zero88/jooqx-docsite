@@ -9,11 +9,13 @@ content:
       start_paths: antora/jooqx
       branches:
         - docs/main
+      tags:
         - docs/jooqx/v*
     - url: https://github.com/zero88/jooqx
       start_paths: antora/rsql
       branches:
         - docs/main
+      tags:
         - docs/rsql/v*
 asciidoc:
   attributes:
