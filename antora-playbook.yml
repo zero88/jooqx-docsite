@@ -19,6 +19,7 @@ content:
         - docs/rsql/v*
 asciidoc:
   attributes:
+    page-project-title: jOOQ.x
     page-github-repo: https://github.com/zero88/jooqx
     page-simple-icons-cdn: https://cdn.jsdelivr.net/npm/simple-icons@v6/icons
     page-docsearch-cdn: https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn
