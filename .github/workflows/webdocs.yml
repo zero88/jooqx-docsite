@@ -1,12 +1,12 @@
-name: docs
+name: webdocs
 
 on:
   workflow_dispatch:
     inputs:
       ciMsg:
         description: 'CI message'
+        default: 'Build webdocs'
         required: true
-        default: 'Deploy jooq.x documentation'
 
 jobs:
   site:
@@ -20,21 +20,14 @@ jobs:
       - name: Checkout webdocs
         uses: actions/checkout@v3
         with:
+          ref: main
           path: webdocs
 
-      - name: Build web site
-        shell: bash
-        run: |
-          cd webdocs
-          yarn install
-          yarn antora --fetch antora-playbook.yml --stacktrace
-
-      - name: Checkout jooqx
+      - name: Checkout gh-pages
         uses: actions/checkout@v3
         with:
-          repository: zero88/jooqx
           ref: gh-pages
-          path: jooqx
+          path: gh-pages
           token: ${{ secrets.OSS_GITHUB_TOKEN }}
 
       - name: Import GPG key
@@ -46,15 +39,22 @@ jobs:
           git_push_gpgsign: false
           gpg_private_key: ${{ secrets.CI_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.CI_GPG_PASSPHARSE }}
-          workdir: jooqx
+          workdir: gh-pages
+
+      - name: Build webdocs
+        shell: bash
+        run: |
+          cd webdocs
+          yarn install
+          yarn antora --fetch antora-playbook.yml --stacktrace
 
       - name: Sync changes to Git branch [gh-pages]
         shell: bash
         run: |
-          rm -rf jooqx/docs \
-            && mkdir -p jooqx/docs \
-            && cp -rf webdocs/build/* webdocs/build/.[^.]* jooqx/docs
-          cd jooqx
+          rm -rf gh-pages/docs \
+            && mkdir -p gh-pages/docs \
+            && cp -rf webdocs/build/* webdocs/build/.[^.]* gh-pages/docs
+          cd gh-pages
           git add .
-          git diff-index --quiet HEAD || git commit -am "${{ github.event.inputs.ciMsg }}"
+          git diff-index --quiet HEAD || git commit -am "${{ inputs.ciMsg }}"
           git push -u origin gh-pages
