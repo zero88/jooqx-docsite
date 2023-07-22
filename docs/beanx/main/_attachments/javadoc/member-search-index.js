@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"io.github.zero88.template","c":"TemplateApi","l":"sum(int, int)","u":"sum(int,int)"}];updateSearchResults();
+memberSearchIndex = [{"p":"io.github.zero88.beanx","c":"Beanx","l":"sum(int, int)","u":"sum(int,int)"}];updateSearchResults();
