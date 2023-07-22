@@ -1,5 +1,7 @@
+**/*
+
 !.gitattributes
 !README.md
-!/docs/**/*
+!/docs
 
-**/*
+
