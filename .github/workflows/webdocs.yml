@@ -3,7 +3,7 @@ name: webdocs
 on:
   workflow_dispatch:
     inputs:
-      ciMsg:
+      docCommitMsg:
         description: 'CI message'
         default: 'Build webdocs'
         required: true
@@ -56,5 +56,5 @@ jobs:
             && cp -rf webdocs/build/* webdocs/build/.[^.]* gh-pages/docs
           cd gh-pages
           git add .
-          git diff-index --quiet HEAD || git commit -am "${{ inputs.ciMsg }}"
+          git diff-index --quiet HEAD || git commit -am "${{ inputs.docCommitMsg }}"
           git push -u origin gh-pages
