@@ -13,10 +13,6 @@ jobs:
     name: Build and Deploy documentation
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
       - name: Checkout webdocs
         uses: actions/checkout@v3
         with:
@@ -40,6 +36,10 @@ jobs:
           gpg_private_key: ${{ secrets.CI_GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.CI_GPG_PASSPHARSE }}
           workdir: gh-pages
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
       - name: Build webdocs
         shell: bash
