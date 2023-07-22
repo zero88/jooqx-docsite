@@ -17,6 +17,12 @@ content:
         - docs/main
       tags:
         - docs/rsql/v*
+    - url: https://github.com/zero88/beanx
+      start_paths: antora/beanx
+      branches:
+        - docs/main
+      tags:
+        - docs/beanx/v*
 asciidoc:
   attributes:
     page-project-title: jOOQ.x
