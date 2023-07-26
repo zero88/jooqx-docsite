@@ -23,6 +23,12 @@ content:
         - docs/main
       tags:
         - docs/beanx/v*
+    - url: https://github.com/zero88/scheduler.x
+      start_paths: antora/schedulerx
+      branches:
+        - docs/main
+      tags:
+        - docs/schedulerx/v*
 asciidoc:
   attributes:
     page-project-title: jOOQ.x
