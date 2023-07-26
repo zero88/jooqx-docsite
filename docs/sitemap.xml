@@ -9,4 +9,7 @@
 <sitemap>
 <loc>https://zero88.github.io/jooqx/sitemap-rsql.xml</loc>
 </sitemap>
+<sitemap>
+<loc>https://zero88.github.io/jooqx/sitemap-schedulerx.xml</loc>
+</sitemap>
 </sitemapindex>
