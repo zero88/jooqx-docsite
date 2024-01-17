@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>What scheduler.x helps :: Reactive SQL with Vert.x and jOOQ</title>
-    <link rel="canonical" href="https://zero88.github.io/jooqx/schedulerx/main/index.html">
+    <title>Cron trigger :: Reactive SQL with Vert.x and jOOQ</title>
+    <link rel="canonical" href="https://zero88.github.io/jooqx/schedulerx/main/features-trigger-cron.html">
     <meta name="generator" content="Antora 3.1.2">
     <link rel="stylesheet" href="../../_/css/site.css">
 <link rel="icon" href="../../favicon.ico" type="image/x-icon"/>
@@ -69,7 +69,7 @@
     <button class="nav-item-toggle"></button>
     <span class="nav-text">Core</span>
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="index.html">What it helps</a>
   </li>
   <li class="nav-item" data-depth="1">
@@ -88,7 +88,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-interval.html">Interval trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="features-trigger-cron.html">Cron trigger</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -191,88 +191,19 @@
   <ul>
     <li><a href="index.html">Scheduler.x</a></li>
     <li>Core</li>
-    <li><a href="index.html">What it helps</a></li>
+    <li><a href="core-api-reference.html">API Reference</a></li>
+    <li><a href="features-trigger-cron.html">Cron trigger</a></li>
   </ul>
 </nav>
-<div class="edit-this-page"><a href="https://github.com/zero88/scheduler.x/edit/docs/main/antora/schedulerx/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+<div class="edit-this-page"><a href="https://github.com/zero88/scheduler.x/edit/docs/main/antora/schedulerx/modules/ROOT/pages/features-trigger-cron.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">What scheduler.x helps</h1>
-<div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>A pluggable <code>lightweight scheduler</code> based on plain <a href="https://vertx.io/">Vert.x</a> core without any external libs for scheduling on <strong>time-based</strong>: <em>cron</em> and <em>interval</em> or on <strong>event-based</strong>.</p>
-</div>
-<div class="paragraph">
-<p><code>Scheduler.x</code> follows an event-driven architecture.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_trigger"><a class="anchor" href="#_trigger"></a>Trigger</h3>
-<div class="paragraph">
-<p><code>Trigger</code> is a component defines the schedule upon which a given <code>Job</code> will be executed.</p>
-</div>
-<div class="paragraph">
-<p>In <code>scheduler.x</code>, there are some out-of-the-box triggers:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>cron-trigger</code> based on <a href="http://www.quartz-scheduler.org/">Quartz</a> - <code>Unix</code> cron expression and <code>timezone</code> available on <code>JVM</code></p>
-</li>
-<li>
-<p><code>interval-trigger</code> with the following parameters: <code>time interval</code>, <code>initial delay time</code> and <code>repeating</code> to specify the number of scheduling repetitions.</p>
-</li>
-<li>
-<p><code>event-trigger</code> a trigger that is scheduled to run on receiving a specific event from a <code>Vert.x event-bus</code> distributed messaging system.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_job"><a class="anchor" href="#_job"></a>Job</h3>
-<div class="paragraph">
-<p><code>Job</code> is a place that does your business that you wish to have executed by the scheduler.</p>
-</div>
-<div class="paragraph">
-<p><code>Scheduler.x</code> supports 2 kind of Job:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>Async job</code>: a job that does an asynchronous computation and returns an asynchronous result
-in a non-blocking mode in Vert.x <code>Future</code> as an event-loop pattern or Java <code>Future</code> as a thread-based pattern.</p>
-</li>
-<li>
-<p><code>Sync job</code>: a job that does a simple calculation or complex calculation that takes some significant time in a blocking mode of the current thread.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>You can easily extend these interfaces to explore your task in the business model.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_monitor"><a class="anchor" href="#_monitor"></a>Monitor</h3>
-<div class="paragraph">
-<p><code>Scheduler.x</code> is an event-driven system that decouple the job execution and job reporting.</p>
-</div>
-<div class="paragraph">
-<p>Without requiring explicit notifications from the <code>Job</code> itself, the client application can register a scheduling monitor.
-Then, <code>Scheduler.x</code> can uniformly notify the client of any events occurring within the scheduler.
-These events may include the execution result after the trigger is fired and the job is executed, a trigger misfiring for some reason and so on.</p>
-</div>
-</div>
-</div>
-</div>
+<h1 class="page">Cron trigger</h1>
+
 </article>
   </div>
 </main>
