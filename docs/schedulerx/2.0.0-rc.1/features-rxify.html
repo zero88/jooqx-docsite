@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Rxfified version :: Reactive SQL with Vert.x and jOOQ</title>
+    <link rel="canonical" href="https://zero88.github.io/jooqx/schedulerx/main/features-rxify.html">
+    <meta name="generator" content="Antora 3.1.2">
+    <link rel="stylesheet" href="../../_/css/site.css">
+<link rel="icon" href="../../favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" href="../../_/css/site-extra.css"/>
+  </head>
+  <body class="article">
+<header class="header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://zero88.github.io/jooqx">Reactive SQL with Vert.x and jOOQ</a>
+                <div class="navbar-item search hide-for-print">
+                    <div id="search-field" class="field">
+                        <input id="search-input" type="text" placeholder="Search the docs"
+                            />
+                    </div>
+                </div>
+            <button class="navbar-burger" data-target="topbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div id="topbar-nav" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">Projects</div>
+                    <div class="navbar-dropdown">
+                        <div class="navbar-item"><strong>jOOQ.x</strong></div>
+                        <a class="navbar-item" href="https://github.com/zero88/jooqx">
+                            <img height="16" width="16" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg"
+                                 alt="GitHub"/>
+                            <span style="padding-left: 5px">Repository</span>
+                        </a>
+                        <a class="navbar-item" href="https://github.com/zero88/jooqx/issues">Issue Tracker</a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item" href="https://github.com/zero88/jooqx">Contributing</a>
+                    </div>
+                </div>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <div class="navbar-link">Community</div>
+                    <div class="navbar-dropdown is-right">
+                        <!--<a class="navbar-item" href="https://antora.zulipchat.com">Chat (Zulip)</a>-->
+                    </div>
+                </div>
+                <a class="navbar-item" href="https://github.com/zero88/jooqx">
+                    <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/github.svg" alt="GitHub"/>
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="schedulerx" data-version="2.0.0-rc.1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <button class="nav-menu-toggle" aria-label="Toggle expand/collapse all" style="display: none"></button>
+    <h3 class="title"><a href="index.html">Scheduler.x</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Core</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">What it helps</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="core-usage.html">Usage</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="core-quickstart.html">Quickstart</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="core-how-it-works.html">How it works</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="core-api-reference.html">API Reference</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-interval.html">Interval trigger</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-cron.html">Cron trigger</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-event.html">Event trigger</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-rule.html">Trigger rule</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-repr.html">Trigger representation</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-job.html">Job</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-monitor.html">Scheduling monitor</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="features-rxify.html">Rxify version</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="_attachments/javadoc/index.html">API docs</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Project Governance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pg-changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pg-upgrade-notes.html">Upgrade notes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pg-release-schedule.html">Release schedule</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="pg-copyright-and-license.html">Copyright and License</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Scheduler.x</span>
+    <span class="version">2.0.0-rc.1</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../beanx/main/index.html">Bean.x</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../beanx/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../jooqx/main/index.html">jOOQ.x</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../jooqx/main/index.html">main</a>
+        </li>
+        <li class="version">
+          <a href="../../jooqx/2.0.0-rc1/index.html">2.0.0-rc1</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../rsql/main/index.html">RSQL</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../rsql/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="../main/index.html">Scheduler.x</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../main/index.html">main</a>
+        </li>
+        <li class="version is-current">
+          <a href="index.html">2.0.0-rc.1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../jooqx/main/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Scheduler.x</a></li>
+    <li>Core</li>
+    <li><a href="core-api-reference.html">API Reference</a></li>
+    <li><a href="features-rxify.html">Rxify version</a></li>
+  </ul>
+</nav>
+<div class="page-versions">
+  <button class="version-menu-toggle" title="Show other versions of page">2.0.0-rc.1</button>
+  <div class="version-menu">
+    <a class="version" href="../main/features-rxify.html">main</a>
+    <a class="version is-current" href="features-rxify.html">2.0.0-rc.1</a>
+  </div>
+</div>
+<div class="edit-this-page"><a href="https://github.com/zero88/scheduler.x/blob/docs/schedulerx/v2.0.0-rc.1/antora/schedulerx/modules/ROOT/pages/features-rxify.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Rxfified version</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Wanna use #schedulerx with <a href="https://reactivex.io/">#reactivex</a> or <a href="https://smallrye.io/smallrye-mutiny">#mutiny</a> on #vertx&#8230;&#8203;</p>
+</div>
+<div class="paragraph">
+<p>Stay tuned, one more step</p>
+</div>
+<div class="paragraph">
+<p><code>scheduler.x</code> supports out of the box almost reactive version that officially supports by <a href="https://vertx.io/docs/#reactive">Vert.x</a></p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="https://vertx.io/docs/vertx-rx/java3/">Vert.x RxJava3</a></p>
+</li>
+<li>
+<p><i class="fa fa-check-square-o"></i> <a href="https://smallrye.io/smallrye-mutiny/">Vert.x Mutiny</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_dependencies_setup"><a class="anchor" href="#_dependencies_setup"></a>Dependencies setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use <code>scheduler.x API</code> with reactive version, add the following dependency to the dependencies section of your build descriptor:</p>
+</div>
+<div class="sect2">
+<h3 id="_maven"><a class="anchor" href="#_maven"></a>Maven</h3>
+<div class="paragraph">
+<p>In your <code>pom.xml</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
+    &lt;dependency&gt;
+       &lt;groupId&gt;io.vertx&lt;/groupId&gt;
+       &lt;artifactId&gt;vertx-rx-java3&lt;/artifactId&gt;                     <i class="conum" data-value="1"></i><b>(1)</b>
+       &lt;version&gt;4.4.4&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+       &lt;groupId&gt;io.smallrye.reactive&lt;/groupId&gt;
+       &lt;artifactId&gt;smallrye-mutiny-vertx-core&lt;/artifactId&gt;         <i class="conum" data-value="2"></i><b>(2)</b>
+       &lt;version&gt;{mutiny-version}&lt;/version&gt;
+    &lt;/dependency&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.github.zero88&lt;/groupId&gt;
+      &lt;artifactId&gt;jooqx&lt;/artifactId&gt;
+      &lt;version&gt;{jooqx-version}&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>For using <code>Rx3</code> version</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>For using <code>mutiny</code> version</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_gradle"><a class="anchor" href="#_gradle"></a>Gradle</h3>
+<div class="paragraph">
+<p><code>Gradle</code> (in your <code>build.gradle</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">dependencies {
+    api 'io.vertx:vertx-core:4.4.4'
+    api 'io.github.zero88:schedulerx:2.0.0-rc.1'
+    // with rx3
+    api 'io.vertx:vertx-rx-java3:4.4.4'                               <i class="conum" data-value="1"></i><b>(1)</b>
+    // or with mutiny
+    api 'io.smallrye.reactive:smallrye-mutiny-vertx-core:{mutiny-version}'      <i class="conum" data-value="2"></i><b>(2)</b>
+    // other your libs...
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>For using <code>Rx3</code> version</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>For using <code>mutiny</code> version</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>Gradle</code> (in your <code>build.gradle.kts</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">dependencies {
+  api("io.vertx:vertx-core:4.4.4")
+  api("io.github.zero88:schedulerx:2.0.0-rc.1")
+  // with rx3
+  api("io.vertx:vertx-rx-java3:4.4.4")                                <i class="conum" data-value="1"></i><b>(1)</b>
+  // or with mutiny
+  api("io.smallrye.reactive:smallrye-mutiny-vertx-core:{mutiny-version}")       <i class="conum" data-value="2"></i><b>(2)</b>
+  // other your libs...
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>For using <code>Rx3</code> version</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>For using <code>mutiny</code> version</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Well done, now you can enjoy <code>Rxify</code> version with a little effort</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples"><a class="anchor" href="#_examples"></a>Examples</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_rx3_by_schedulerx_instance"><a class="anchor" href="#_rx3_by_schedulerx_instance"></a><code>Rx3</code> - By <code>schedulerx</code> instance</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">io.github.zero88.schedulerx.IntervalScheduler scheduler
+    = io.github.zero88.schedulerx.IntervalScheduler.builder()
+                                                   .setVertx(vertx)
+                                                   .setTrigger(trigger)
+                                                   .setJob(job)
+                                                   .build();
+// create rx3 schedulerx by non-rxify version
+io.github.zero88.schedulerx.rxjava3.IntervalScheduler rxScheduler
+    = io.github.zero88.schedulerx.rxjava3.IntervalScheduler.newInstance(scheduler);
+rxScheduler.start();</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rx3_by_schedulerx_builder"><a class="anchor" href="#_rx3_by_schedulerx_builder"></a><code>Rx3</code> - By <code>schedulerx</code> builder</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">io.vertx.rxjava3.core.Vertx vertxRx3 = io.vertx.rxjava3.core.Vertx.newInstance(vertx);
+io.vertx.rxjava3.core.WorkerExecutor workerExecutor = vertxRx3.createSharedWorkerExecutor("hello-rx3");
+
+// Create rx3 schedulerx by builder
+io.github.zero88.schedulerx.rxjava3.CronScheduler rxScheduler
+    = io.github.zero88.schedulerx.rxjava3.CronScheduler.builder()
+                                                       .setVertx(vertxRx3)
+                                                       .setTrigger(trigger)
+                                                       .setJob(job)
+                                                       .build();
+// Start scheduler with rx3 worker
+rxScheduler.start(workerExecutor);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mutiny_by_schedulerx_builder"><a class="anchor" href="#_mutiny_by_schedulerx_builder"></a><code>Mutiny</code> - By <code>schedulerx</code> builder</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">io.vertx.mutiny.core.Vertx vertxMutiny = io.vertx.mutiny.core.Vertx.newInstance(vertx);
+io.vertx.mutiny.core.WorkerExecutor workerExecutor = vertxMutiny.createSharedWorkerExecutor("hello-mutiny");
+
+// Create mutiny schedulerx by builder
+io.github.zero88.schedulerx.mutiny.EventScheduler&lt;JsonObject&gt; mutinyScheduler
+    = io.github.zero88.schedulerx.mutiny.EventScheduler.&lt;Object, Object, JsonObject&gt;builder()
+                                                       .setVertx(vertxMutiny)
+                                                       .setTrigger(trigger)
+                                                       .setJob(job)
+                                                       .build();
+// Start scheduler with mutiny worker
+mutinyScheduler.start(workerExecutor);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <p>
+        The jOOQ.x documentation site is generated using
+        <a href="https://plugins.gradle.org/plugin/cloud.playio.gradle.antora">Antora Gradle plugin</a>.
+    </p>
+</footer>
+<script id="site-script" src="../../_/js/site.js" data-ui-root-path="../../_"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+    <script async src="../../_/js/search-ui.js" id="search-ui-script" data-site-root-path="../.."
+            data-snippet-length="${snippetLength}" data-stylesheet="../../_/css/search.css"></script>
+    <script async src="../../search-index.js"></script>
+  </body>
+</html>
