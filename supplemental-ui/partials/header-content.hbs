@@ -27,14 +27,19 @@
                     <div class="navbar-link">Projects</div>
                     <div class="navbar-dropdown">
                         <div class="navbar-item"><strong>{{ page.attributes.project-title }}</strong></div>
-                        <a class="navbar-item" href="{{ page.attributes.github-repo }}">
-                            <img height="16" width="16" src="{{ page.attributes.simple-icons-cdn }}/github.svg"
-                                 alt="GitHub"/>
-                            <span style="padding-left: 5px">Repository</span>
+                        <a class="navbar-item" href="{{ page.attributes.origin-url }}">
+                            <img height="16" width="16" src="{{ page.attributes.simple-icons-cdn }}/git.svg" alt="GitHub"/>
+                            <span class="navbar-item-text">Repository</span>
                         </a>
-                        <a class="navbar-item" href="{{ page.attributes.github-repo }}/issues">Issue Tracker</a>
+                        <a class="navbar-item" href="{{ page.attributes.origin-url }}/issues">
+                            <img height="16" width="16" src="{{ page.attributes.simple-icons-cdn }}/github.svg" alt="GitHub Issues"/>
+                            <span class="navbar-item-text">Issue Tracker</span>
+                        </a>
                         <hr class="navbar-divider">
-                        <a class="navbar-item" href="{{ page.attributes.github-repo }}">Contributing</a>
+                        <a class="navbar-item" href="{{ page.attributes.origin-url }}">
+                            <img height="16" width="16" src="{{ page.attributes.simple-icons-cdn }}/crowdsource.svg" alt="Contributing"/>
+                            <span class="navbar-item-text">Contributing</span>
+                        </a>
                     </div>
                 </div>
                 <div class="navbar-item has-dropdown is-hoverable">
@@ -43,7 +48,7 @@
                         <!--<a class="navbar-item" href="https://antora.zulipchat.com">Chat (Zulip)</a>-->
                     </div>
                 </div>
-                <a class="navbar-item" href="{{ page.attributes.github-repo }}">
+                <a class="navbar-item" href="{{ page.attributes.origin-url }}">
                     <img height="32" width="32" src="{{ page.attributes.simple-icons-cdn }}/github.svg" alt="GitHub"/>
                 </a>
             </div>

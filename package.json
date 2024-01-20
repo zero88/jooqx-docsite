@@ -1,12 +1,12 @@
 {
-  "name": "jooqx-web-docs",
+  "name": "webdocs",
   "version": "1.0.1",
   "license": "Apache-2.0",
   "scripts": {
     "antora": "antora",
     "build": "antora antora-playbook.yml",
     "build:local": "antora antora-local-playbook.yml",
-    "prehttp": "yarn run build:local",
+    "prehttp": "yarn run build",
     "http": "http-server build -p 1234 -o -c-1"
   },
   "dependencies": {

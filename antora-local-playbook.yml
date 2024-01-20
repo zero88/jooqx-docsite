@@ -1,5 +1,5 @@
 site:
-  title: Reactive SQL with Vert.x and jOOQ
+  title: My OpenSource // Docs
   start_page: jooqx::index.adoc
   url: http://localhost:1234
   robots: allow
@@ -12,9 +12,7 @@ content:
         - rsql/asciidoc/build/antora
 asciidoc:
   attributes:
-    page-project-title: jOOQ.x
-    page-github-repo: https://github.com/zero88/jooqx
-    page-simple-icons-cdn: https://cdn.jsdelivr.net/npm/simple-icons@v6/icons
+    page-simple-icons-cdn: https://cdn.jsdelivr.net/npm/simple-icons@v11/icons
     page-docsearch-cdn: https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn
     page-lunr-cdn: https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js
     page-lunr-lang-cdn: https://cdn.jsdelivr.net/npm/lunr-languages@1.9.0/lunr.stemmer.support.js

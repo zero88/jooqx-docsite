@@ -1,6 +1,10 @@
-# jooqx-webdocs
+# Webdocs
 
-The website for [jOOQ.x](https://github.com/zero88/jooqx) document
+The documentation website for my([zero88](https://github.com/zero88)) opensource projects.
+
+## Useful link
+
+- [Asciidoc page attributes](https://docs.antora.org/antora/latest/page/intrinsic-attributes/#page-attributes)
 
 ## Credits
 
