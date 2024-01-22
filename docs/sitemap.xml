@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <sitemap>
-<loc>https://zero88.github.io/jooqx/sitemap-beanx.xml</loc>
+<loc>https://zero88.github.io/webdocs/sitemap-beanx.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://zero88.github.io/jooqx/sitemap-jooqx.xml</loc>
+<loc>https://zero88.github.io/webdocs/sitemap-jooqx.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://zero88.github.io/jooqx/sitemap-rsql.xml</loc>
+<loc>https://zero88.github.io/webdocs/sitemap-rsql.xml</loc>
 </sitemap>
 <sitemap>
-<loc>https://zero88.github.io/jooqx/sitemap-schedulerx.xml</loc>
+<loc>https://zero88.github.io/webdocs/sitemap-schedulerx.xml</loc>
 </sitemap>
 </sitemapindex>
