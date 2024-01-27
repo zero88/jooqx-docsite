@@ -93,16 +93,25 @@
     <a class="nav-link" href="core-api-reference.html">API Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="features-trigger.html">Trigger</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-interval.html">Interval trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-cron.html">Cron trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-event.html">Event trigger</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-rule.html">Trigger rule</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-evaluator.html">Trigger evaluator</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-repr.html">Trigger representation</a>
@@ -114,7 +123,13 @@
     <a class="nav-link" href="features-monitor.html">Scheduling monitor</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-configuration.html">Configuration and Option</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-rxify.html">Rxify version</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-worker-thread.html">Worker Thread management</a>
   </li>
 </ul>
   </li>
@@ -225,7 +240,7 @@
 <p>A pluggable <code>lightweight scheduler</code> based on plain <a href="https://vertx.io/">Vert.x</a> core without any external libs for scheduling on <strong>time-based</strong>: <em>cron</em> and <em>interval</em> or on <strong>event-based</strong>.</p>
 </div>
 <div class="paragraph">
-<p><code>Scheduler.x</code> follows an event-driven architecture.</p>
+<p><code>Scheduler.x</code> follows a modularization design and an event-driven architecture.</p>
 </div>
 </div>
 </div>
@@ -283,9 +298,46 @@ in a non-blocking mode in Vert.x <code>Future</code> as an event-loop pattern or
 <p><code>Scheduler.x</code> is an event-driven system that decouple the job execution and job reporting.</p>
 </div>
 <div class="paragraph">
-<p>Without requiring explicit notifications from the <code>Job</code> itself, the client application can register a scheduling monitor.
+<p>Without requiring explicit notifications from the <code>Job</code> itself, the client application(your program) can register a scheduling monitor.
 Then, <code>Scheduler.x</code> can uniformly notify the client of any events occurring within the scheduler.
 These events may include the execution result after the trigger is fired and the job is executed, a trigger misfiring for some reason and so on.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_data_json_serializable"><a class="anchor" href="#_data_json_serializable"></a>Data JSON serializable</h3>
+<div class="paragraph">
+<p>The component API in <code>scheduler.x</code> is designed to be friendly with <a href="https://vertx.io/docs/vertx-core/java/#_json">Vert.x JSON</a>, is also compatible with <a href="https://github.com/FasterXML/jackson">Jackson</a>.</p>
+</div>
+<div class="paragraph">
+<p>This makes it easy to serialize all objects into a JSON-formatted string with minimal effort. The resulting string can be transmitted over a network or stored in a file or database, allowing you to store the work data configuration in your desired storage.</p>
+</div>
+<div class="paragraph">
+<p>Once you restart your program, <code>scheduler.x</code> will deserialize the JSON data into appropriate objects, which will enable your scheduling work to continue seamlessly.</p>
+</div>
+<div class="paragraph">
+<p>This allows <code>scheduler.x</code> to function in both stateful and stateless modes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_modularization_fluent_api_and_type_safe_programming"><a class="anchor" href="#_modularization_fluent_api_and_type_safe_programming"></a>Modularization, fluent API and type-safe programming</h3>
+<div class="paragraph">
+<p><code>scheduler.x</code> is designed based on</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Modular_programming">modularity</a>  mechanism is by breaking down the functionality into smaller independent parts that are extensible and interchangeable.</p>
+</li>
+<li>
+<p>a <a href="https://martinfowler.com/bliki/FluentInterface.html">fluent API concept</a>, where multiple methods calls can be chained together</p>
+</li>
+<li>
+<p>type-safe programming, which enforces rules to ensure that operations are performed on compatible types.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I strongly believe that implementing this approach significantly reduces the likelihood of errors, enhances code clarity, maximizes extensibility, and simplifies maintenance for the client application.</p>
 </div>
 </div>
 </div>

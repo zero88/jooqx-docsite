@@ -93,16 +93,25 @@
     <a class="nav-link" href="core-api-reference.html">API Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="features-trigger.html">Trigger</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-interval.html">Interval trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-cron.html">Cron trigger</a>
   </li>
-  <li class="nav-item is-current-page" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="3">
     <a class="nav-link" href="features-trigger-event.html">Event trigger</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-rule.html">Trigger rule</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-evaluator.html">Trigger evaluator</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-repr.html">Trigger representation</a>
@@ -114,7 +123,13 @@
     <a class="nav-link" href="features-monitor.html">Scheduling monitor</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-configuration.html">Configuration and Option</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-rxify.html">Rxify version</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-worker-thread.html">Worker Thread management</a>
   </li>
 </ul>
   </li>
@@ -202,6 +217,7 @@
     <li><a href="index.html">Scheduler.x</a></li>
     <li>Core</li>
     <li><a href="core-api-reference.html">API Reference</a></li>
+    <li><a href="features-trigger.html">Trigger</a></li>
     <li><a href="features-trigger-event.html">Event trigger</a></li>
   </ul>
 </nav>
@@ -220,7 +236,18 @@
 </aside>
 <article class="doc">
 <h1 class="page">Event trigger</h1>
-
+<div class="paragraph">
+<p>An event trigger is a mechanism that initiates a certain action in response to an event or change in state.</p>
+</div>
+<div class="paragraph">
+<p><code>Vert.x</code> provides a nervous system called <a href="https://vertx.io/docs/vertx-core/java/#event_bus">event bus</a> that distributes the message around different parts of your application, or different applications and services to communicate with each other in a loosely coupled way.</p>
+</div>
+<div class="paragraph">
+<p><code>Scheduler.x</code> <em>Event Trigger</em> acts as a <code>subscriber</code> in <code>publish/subscriber</code> messaging pattern of <code>event bus</code> system.</p>
+</div>
+<div class="paragraph">
+<p>The advanced feature allows you to customize a <strong>predicate</strong> that converts event bus messages to expected message data, and then verify that the incoming data matches your configuration. If the condition is met, the <code>EventTrigger</code> will be activated to perform your business task.</p>
+</div>
 </article>
   </div>
 </main>

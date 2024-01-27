@@ -93,16 +93,25 @@
     <a class="nav-link" href="core-api-reference.html">API Reference</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="features-trigger.html">Trigger</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-interval.html">Interval trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-cron.html">Cron trigger</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item" data-depth="3">
     <a class="nav-link" href="features-trigger-event.html">Event trigger</a>
+  </li>
+</ul>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-rule.html">Trigger rule</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-trigger-evaluator.html">Trigger evaluator</a>
   </li>
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-trigger-repr.html">Trigger representation</a>
@@ -114,7 +123,13 @@
     <a class="nav-link" href="features-monitor.html">Scheduling monitor</a>
   </li>
   <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-configuration.html">Configuration and Option</a>
+  </li>
+  <li class="nav-item" data-depth="2">
     <a class="nav-link" href="features-rxify.html">Rxify version</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="features-worker-thread.html">Worker Thread management</a>
   </li>
 </ul>
   </li>
@@ -219,11 +234,44 @@
 </aside>
 <article class="doc">
 <h1 class="page">Scheduler.x Quickstart</h1>
-<div class="sect1">
-<h2 id="_prerequisite"><a class="anchor" href="#_prerequisite"></a>Prerequisite</h2>
-<div class="sectionbody">
-
+<div class="paragraph">
+<p><code>Scheduler.x</code> provides a builder pattern that allows you to create custom schedules for different business applications.</p>
 </div>
+<div class="paragraph">
+<p>You can design a loop of recurrence from simple to complex in the <code>Trigger</code> object, step by step. After that, you can build a corresponding <code>Scheduler</code> object to manage the scheduling lifecycle, which contains a <code>Job</code> that performs your business operations.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">IntervalTrigger trigger = IntervalTrigger.builder().interval(Duration.ofSeconds(5)).build();            <i class="conum" data-value="1"></i><b>(1)</b>
+Job&lt;Void, Void&gt; job = (jobData, executionContext) -&gt; System.out.println("Get started with scheduler.x");<i class="conum" data-value="2"></i><b>(2)</b>
+IntervalScheduler scheduler = IntervalScheduler.&lt;Void, Void&gt;builder()                                   <i class="conum" data-value="3"></i><b>(3)</b>
+                                               .setVertx(vertx).setTrigger(trigger).setJob(job).build();
+// After starting, every 5 seconds, the program will print to
+// the console log with the text `Get started with scheduler.x`
+scheduler.start();                                                                                      <i class="conum" data-value="4"></i><b>(4)</b>
+// Do other stuff
+System.out.println("Are you ready to explore more?");}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Create an Interval trigger</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Create simple job</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Create an Interval Scheduler</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Start a scheduler</td>
+</tr>
+</table>
 </div>
 </article>
   </div>
