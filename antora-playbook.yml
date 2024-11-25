@@ -29,6 +29,12 @@ content:
         - docs/main
       tags:
         - docs/schedulerx/v*
+    - url: https://github.com/zero88/robotframework-excel
+      start_paths: antora/robotframework-excel
+      branches:
+        - docs/main
+      tags:
+        - docs/robotframework-excel/v*
 asciidoc:
   attributes:
     page-simple-icons-cdn: https://cdn.jsdelivr.net/npm/simple-icons@v11/icons
